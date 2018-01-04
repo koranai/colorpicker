@@ -1,0 +1,47 @@
+<main>
+  <div ng-controller="NoteController">
+    <section ng-repeat="item in colors">
+      <div class="circle" style="background:{{item.color}};" ng-click="edit($index)">
+      </div>
+      <span>{{item.color}}</span>
+      <span>{{item.note}}</span>
+      <div class="balloon" ng-if="show_index == $index">
+        <i class="fa fa-trash" aria-hidden="true" ng-click="item_delete($index);"></i>
+        <i class="fa fa-times-circle" aria-hidden="true" ng-click="hide()"></i>
+        <div>
+        <label>color:</label>
+        <input ng-model="item.color" style="width:100px">
+        </div>
+        <div>
+        <label>note:</label>
+        <input ng-model="item.note" style="width:200px">
+        </div>
+      </div>
+    </section>
+    <div class="button_div">
+      <button ng-click="add()"><i class="fa fa-plus" aria-hidden="true"></i>色を追加</button>
+    </div>
+    <div class="button_div">
+      <button id="show_picker" onclick="picker_show()"><i class="fa fa-picture-o" aria-hidden="true"></i></i>画像から色を選択</button>
+    </div>
+  </div>
+
+    <!-- picker -->
+    <div ng-controller="pickerController" id="picker_div" style="display: none;">
+    <h1>画像から色を選択します。</h1>
+    <h2>1.画像を選択します</h2>
+    <div class="file" id="file_input_div">
+      <input id="fileField" type="file" accept="image/*">
+    </div>
+    <h2>2.画像をクリックして色を選択します</h2>
+    <div id="pickers">
+        <p>The picked color will be displayed here.</p>
+        <div ng-repeat="picked in pickedes" class="color" style="{{picked.back_ground_color}}"></div>
+    </div>
+    <div><button ng-click="toNote()">noteに反映</button></div>
+    <canvas id="canvas"></canvas>
+    </div>
+  </main>
+        
+        
+    
