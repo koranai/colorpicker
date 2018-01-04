@@ -286,12 +286,3 @@ function paddingZero(str){
   }
   return str;
 }
-
-function picker_show(){
-    var picker = document.getElementById('picker_div');
-    if(picker.style == ""){
-        pickerstyle = "display:none";
-    }else{
-        picker.style = "";
-    }
-}
